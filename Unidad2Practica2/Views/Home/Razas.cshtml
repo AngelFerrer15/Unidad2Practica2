@@ -1,0 +1,75 @@
+﻿@model Unidad2Practica2.Models.ViewModels.RazaPerroViewModel
+@{
+    Layout = "Layout";
+}
+
+<h2 id="nombre">@Model.Nombre</h2>
+
+<section class="descripcion" id="descripcion">
+    @Model.Descripcion
+</section>
+
+<section class="galeria">
+    <img id="fotoPerro" src="~/imgs_perros/@(Model.Id)_0.jpg" />
+</section>
+
+<section class="datos">
+    <h3>Datos</h3>
+    <label>Otros nombres: </label>
+    <span id="otrosNombre">@Model.OtrosNombres</span>
+    <br />
+    <label>País de Origen: </label>
+    <span id="pais">@Model.Pais</span>
+    <br />
+    <label>Peso: </label>
+    <span id="peso">@(Model.PesoMinimo)kg. - @(Model.PesoMaximo)27kg.</span>
+    <br />
+    <label>Altura: </label>
+    <span id="altura">@(Model.AlturaMinima)cm. - @(Model.AlturaMaxima)cm.</span>
+    <br />
+    <label>Esperanza de Vida: </label>
+    <span id="vida">@Model.EsperanzaVida</span>
+    <br />
+</section>
+<section class="estadisticas">
+    <h3>Estadísticas</h3>
+    <label>Nivel de Energía:</label><img src="~/imgs/nivel@(Model.estadisticas.NivelEnergia).png" /><br />
+    <label>Facilidad de Entrenamiento:</label><img src="~/imgs/nivel@(Model.estadisticas.FacilidadEntrenamiento).png" /><br />
+    <label>Ejercicio Obligatorio:</label><img src="~/imgs/nivel@(Model.estadisticas.EjercicioObligatorio).png" /><br />
+    <label>Amistad con Desconocidos:</label><img src="~/imgs/nivel@(Model.estadisticas.AmistadDesconocidos).png" /><br />
+    <label>Amistad con Perros:</label><img src="~/imgs/nivel@(Model.estadisticas.AmistadPerros).png" /><br />
+    <label>Necesidad de Cepillado:</label><img src="~/imgs/nivel@(Model.estadisticas.NecesidadCepillado).png" />
+</section>
+<section class="fisicas">
+    <h3>Caracteristicas Físicas</h3>
+    <label>Patas: </label>
+    <span id="patas"> @Model.caracteristicas.Patas</span>
+    <br />
+    <label>Cola: </label>
+    <span id="cola"> @Model.caracteristicas.Cola</span>
+    <br />
+    <label>Hocico: </label>
+    <span id="hocico"> @Model.caracteristicas.Hocico</span>
+    <br />
+    <label>Pelo: </label>
+    <span id="pelo"> @Model.caracteristicas.Pelo</span>
+    <br />
+    <label>Color: </label>
+    <span id="color">@Model.caracteristicas.Color</span>
+</section>
+<br class="clear" />
+
+<a href="javascript:history.back();" class="button">Regresar</a>
+
+<section class="otrosPerros">
+
+    @foreach (var op in Model.OtrosPerros)
+    {
+        <a href="~/Perro/@op.Nombre.Replace(" ","-")">
+            <img src="~/imgs_perros/@(op.Id)_0.jpg" />
+            <h2>@op.Nombre</h2>
+        </a>
+    }
+
+
+</section>
